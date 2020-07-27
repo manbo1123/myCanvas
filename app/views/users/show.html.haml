@@ -1,0 +1,9 @@
+.mypage
+  %h1 マイページ
+
+.user_name
+  = @user.name
+
+.post_list
+  - @posts.each do |post|
+    = link_to post.problem, post_path(post.id)

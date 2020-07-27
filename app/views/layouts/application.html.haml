@@ -10,16 +10,16 @@
     .flash_message
       - flash.each do |key, value|
         = content_tag(:div, value, class: key)
-    %header
-      .title
+    %header.header
+      .header__title
         = link_to "myCanvas", root_path
-      .user_btn
+      .header__user_btn
         - if user_signed_in?
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout_btn"
           = link_to "マイページ", user_path(current_user), class: "mypage_show"
         - else
           = link_to "ログイン", new_user_session_path, class: "login_btn"
-          = link_to "新規登録", new_user_registration_path, class: "registration_btn"
+          = link_to "新規ユーザー登録", new_user_registration_path, class: "registration_btn"
     = yield
     %footer
       %p Copyright MyCanvas 2020.
