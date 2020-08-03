@@ -1,0 +1,58 @@
+.user_page{
+  padding-top: 50px;
+}
+//----------------------マイページ---------------------------
+.mypage{
+  padding-top: 50px;
+  h2{
+    text-align: center;
+  }
+  .post_list{
+    height: 100%;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+    &__box{
+      width: 400px;
+      a{
+        text-align: end;
+        display: block;
+        font-size: 12px;
+        color: rgb(0, 87, 250);
+        margin-right: 25px;
+      }
+    }
+    .canvas{
+      zoom: 0.4;
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
+  .favorite_list{
+    height: 100%;
+  }
+}
+
+//----------------------ログインページ、ユーザー登録ページ---------------------------
+.user_page.login_page, .user_page.user_new_page{
+  width: 500px;
+  height: 550px;
+  margin: 50px auto;
+  text-align: center;
+  .field{
+    margin-top: 10px;
+    #user_email, #user_password, #user_name, #user_password_confirmation{
+      width: 70%;
+    }
+  }
+  input[type='submit'] {
+    margin-top: 20px;
+    width: 70%;
+    height: 35px;
+    
+    background-color: lightgrey;
+    border: 1px solid gray;
+    border-radius: 5px;
+  }
+}
