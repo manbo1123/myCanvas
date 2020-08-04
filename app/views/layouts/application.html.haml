@@ -4,7 +4,22 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title MyCanvas
     = csrf_meta_tags
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
   %body
+    .flash_message
+      - flash.each do |key, value|
+        = content_tag(:div, value, class: key)
+    %header.header
+      .header__title
+        = link_to "myCanvas", root_path
+      .header__user_btn
+        - if user_signed_in?
+          = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout_btn"
+          = link_to "マイページ", user_path(current_user), class: "mypage_show"
+        - else
+          = link_to "ログイン", new_user_session_path, class: "login_btn"
+          = link_to "新規ユーザー登録", new_user_registration_path, class: "registration_btn"
     = yield
+    %footer
+      %p Copyright MyCanvas 2020.
