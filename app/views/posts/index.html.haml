@@ -1,0 +1,98 @@
+.top_page 
+
+  .top_page__introduction
+    .top_page__introduction__text
+      .top_page__introduction__text--title Business Model canvas
+      .top_page__introduction__text--content 
+        .coment
+          9つの要素から事業プランを整理するフレームワーク。
+          %br 
+          1枚の紙上で事業を俯瞰的に理解できるのがメリットの1つ。
+        .details
+          %ul.details_list
+            %li 1．顧客　Customer Segment(CS)
+            %li 2．価値提案　Value Propositions(VP)
+            %li 3．チャネル　Channels(CH)
+            %li 4．顧客との関係　Customer Relationships(CR)
+            %li 5．収益の流れ　Revenue Streams(RS)
+            %li 6．キーリソース　Key Resources(KR)
+            %li 7．主要活動　Key Activities(KA)
+            %li 8．キーパートナー　Key Partner(KP)
+            %li 9．コスト構造　Cost Structure(CS)
+          = image_tag 'pict/bmc.gif', class: "bmc_image"
+
+  .top_page__introduction.hypothesis_canvas
+    .top_page__introduction__text
+      .top_page__introduction__text--title 仮説キャンバス
+      .top_page__introduction__text--content 
+        .coment
+          プロダクトの仮説を整理するためのキャンバス。
+          %br 
+          1枚絵にすることで、全体像をつかみやすく、エリア間のつながりを考えやすい。
+          %br
+          デメリットは、時間軸は表現できないこと。
+        .details
+          %ul.details_list
+            %li 1．目的　なぜやるのか？
+            %li 2．ビジョン　顧客にどうなってもらいたいか？
+            %li 3．実現手段　提供価値を実現する手段
+            %li 4．優位性　参入理由、既存リソースアセットの優位性
+            %li 5．評価指標　評価基準
+            %li 6．提案価値　顧客にもたらされる価値
+            %li 7．顕在課題　現在把握しているが課題として解決できていないもの
+            %li 8．潜在課題　顧客も気づいていない潜在的な課題
+            %li 9．代替手段　課題解決のための現状の代替手段
+            %li 10．チャネル　顧客との接点と獲得戦略
+            %li 11．状況 顧客の置かれている状況
+            %li 12．傾向　状況から生まれる傾向
+          = image_tag 'pict/kasetu.png', class: "bmc_image"
+  .post_list_title
+    %h1 投稿一覧
+  .post_list
+    - @posts.each do |post|
+      = link_to post_path(post) do
+        %p.post_user_name #{post.user.name}
+        .canvas
+          .canvas__box1
+            .canvas__box1__purpose
+              %p 目的
+            .canvas__box1__vision
+              %p ビジョン
+          .canvas__box2
+            .canvas__box2__solution.small_box
+              %p 実現手段
+              = post.solution
+            .canvas__box2__advantage_metics.small_box
+              .canvas__box2__advantage_metics__advantage
+                %p 優位性
+                = post.advantage
+              .canvas__box2__advantage_metics__metics
+                %p 評価指標
+                = post.metics
+            .canvas__box2__value.small_box
+              %p 提供価値
+              = post.value
+            .canvas__box2__problem.small_box
+              %p 課題
+              = post.problem
+            .canvas__box2__existing_channel.small_box
+              .canvas__box2__existing_channel__existing
+                %p 代替手段
+                = post.existing
+              .canvas__box2__existing_channel__channel
+                %p チャネル
+                = post.channel
+            .canvas__box2__customer.small_box
+              %p 顧客の状況・傾向
+              = post.customer
+          .canvas__box3
+            .canvas__box3__revenue
+              %p 収益
+              = post.revenue
+            .canvas__box3__cost
+              %p コスト
+              = post.cost
+
+
+
+= render partial: "post_btn"

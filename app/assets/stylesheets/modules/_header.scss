@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: sans-serif;
+}
+a {
+  cursor: pointer;
+  color: black;
+}
+a:hover {
+  cursor: pointer;
+  color: grey;
+}
+
+.header{
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  display: flex;
+  justify-content: space-between;
+  height: 50px;
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid rgb(224, 226, 205);
+  &__title {
+    padding: 5px 20px;
+    font-weight: bolder;
+    font-size: 30px;
+  }
+  &__user_btn{
+    line-height: 50px;
+    padding-right: 50px;
+    a{
+      margin-left: 15px;
+    }
+  }
+}
+
+input:focus, select:focus {
+  border-color: rgb(255, 21, 80);
+  background-color: rgba(254, 255, 197, 0.801);
+  outline: 0;
+}
