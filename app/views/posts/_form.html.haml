@@ -1,0 +1,60 @@
+.post_form
+  %p キャンバスは検証が必要。内容は本当に正しいか？
+  = form_for @post, local: true do |f|
+    .post_form__body
+      %label.post_form__body__label 課題設定（problem）
+      %p.post_form__body__text 顧客が抱えている優先度の高い課題3つ（※ 3つ以上書かない！！）
+      .post_form__body__form
+        = f.text_area :problem, class: "post_form__body__form__text", placeholder: "現在把握しているが、解決できていないものは(健在課題)？\r\n顧客も気づいていない課題は(潜在課題)？" 
+
+      %label.post_form__body__label 既存の代替品（existing）
+      %p.post_form__body__text 課題を解決する既存サービス、代替手段
+      .post_form__body__form
+        = f.text_area :existing, class: "post_form__body__form__text", placeholder: "課題を解決する既存サービス" 
+
+      %label.post_form_body__label 解決方法（solution）
+      %p.post_form__body__text 各課題を解決できる解決策、解決策は機能とは限らない（※ 3つ以上書かない！！）
+      .post_form__body__form
+        = f.text_area :solution, class: "post_form__body__form__text", placeholder: "課題を解決する手段" 
+
+      %label.post_form__body__label 指標（metics）
+      %p.post_form__body__text ビジネスを評価する指標（成長を計測するために注目すべき指標）
+      .post_form__body__form
+        = f.text_area :metics, class: "post_form__body__form__text", placeholder: "ビジネスを評価する指標" 
+
+      %label.post_form__body__label 提供価値（value）
+      %p.post_form__body__text 課題を解決する価値
+      .post_form__body__form
+        = f.text_area :value, class: "post_form__body__form__text", placeholder: "課題を解決する価値" 
+
+      %label.post_form__body__label 優位性（advantage）
+      %p.post_form__body__text 容易に真似できない強み
+      .post_form__body__form
+        = f.text_area :advantage, class: "post_form__body__form__text", placeholder: "容易に真似できない強み" 
+
+      %label.post_form__body__label 販路（channel）
+      %p.post_form__body__text サービスの届け方
+      .post_form__body__form
+        = f.text_area :channel, class: "post_form__body__form__text", placeholder: "AppStoreやGoogle Play、口コミ、検索エンジンなど" 
+
+      %label.post_form__body__label 顧客（customer）
+      %p.post_form__body__text ターゲットとなる顧客は誰か？（顧客：お金を払ってくれる人、ユーザー：サービスを使ってくれる人）
+      .post_form__body__form
+        = f.text_area :customer, class: "post_form__body__form__text", placeholder: "顧客は誰か？ \r\n 顧客の置かれている状況は? \r\n その状況から生まれる傾向は？" 
+
+      %label.post_form__body__label 費用構造（cost）
+      %p.post_form__body__text 価値を提供する上でかかるコスト（固定費と変動費）
+      .post_form__body__form
+        = f.text_area :cost, class: "post_form_body__form__text", placeholder: "価値を提供するためにかかるコスト\r\n想定する市場と規模は？" 
+
+      %label.post_form__body__label 収益の流れ（revenue）
+      %p.post_form__body__text マネタイズプラン、収益源
+      .post_form__body__form
+        = f.text_area :revenue, class: "post_form__body__form__text", placeholder: "マネタイズプラン" 
+
+    .btn
+      - if @post.persisted?
+        = f.submit "更新する", class: "post_btn"
+      - else
+        = f.submit "登録する", class: "post_btn"
+      = link_to "戻る", root_path, class: "return_btn"
