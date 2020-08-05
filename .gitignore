@@ -18,5 +18,6 @@
 
 # Ignore Directory of image files
 public/uploads/*
-/.env
+
 config/secrets.yml
+/.env
