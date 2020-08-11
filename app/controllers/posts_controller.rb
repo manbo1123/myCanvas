@@ -52,6 +52,8 @@ class PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(
+      :purpose,
+      :vision,
       :problem, 
       :existing, 
       :solution, 
@@ -61,7 +63,8 @@ class PostsController < ApplicationController
       :channel, 
       :customer, 
       :cost, 
-      :revenue).merge(user_id: current_user.id)
+      :revenue,
+      :note).merge(user_id: current_user.id)
   end
 
   def set_post
