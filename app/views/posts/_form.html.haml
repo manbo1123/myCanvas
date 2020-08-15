@@ -65,7 +65,7 @@
       %label.post_form__body__label 備考（note）
       %p.post_form__body__text マークダウン記法で書けます。
       .post_form__body__form
-        = f.text_area :note, class: "post_form__body__form__text", placeholder: "# h1" 
+        = f.text_area :note, class: "post_form__body__form__text note", placeholder: "# h1" 
 
     .btn
       - if @post.persisted?
