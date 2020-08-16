@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
   belongs_to :user, optional: true
-
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :problem, :existing, :solution, :metics, :value, :advantage, :channel, :customer, :cost, :revenue, presence: true
 
   def previous

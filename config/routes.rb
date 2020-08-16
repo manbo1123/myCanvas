@@ -6,5 +6,9 @@ Rails.application.routes.draw do
 
   root "posts#index"
   resources :users, only: [:show, :edit, :update]
-  resources :posts, expect: [:index]
+
+  resources :posts, expect: [:index] do
+    resource :favorites, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
+  end
 end
