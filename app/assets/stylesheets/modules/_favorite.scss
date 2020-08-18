@@ -1,0 +1,17 @@
+.favorite_box{
+  background-color: rgb(235, 235, 235);
+  width: 150px;
+  height: 33px;
+  line-height: 33px;
+  text-align: center;
+  border-radius: 30px;
+  .favorite-delete{
+    color: gray;
+    .i::before{
+      color: rgb(252, 0, 42);
+    }
+  }
+  .favorite-post{
+    color: gray;
+  }
+}
