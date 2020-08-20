@@ -2,7 +2,9 @@ class FavoritesController < ApplicationController
   before_action :set_post
 
   def create
-    @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id)
+    if @post.user_id != current_user.id
+      @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id)
+    end
   end
 
   def destroy

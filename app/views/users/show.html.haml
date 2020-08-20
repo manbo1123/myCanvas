@@ -5,48 +5,10 @@
 
   .post_list
     - @posts.each do |post|
-      .post_list__box
-        = link_to "詳細ページへ", post_path(post.id)
-        .canvas
-          .canvas__box1
-            .canvas__box1__purpose
-              %p 目的
-            .canvas__box1__vision
-              %p ビジョン
-          .canvas__box2
-            .canvas__box2__solution.small_box
-              %p 実現手段
-              = post.solution
-            .canvas__box2__advantage_metics.small_box
-              .canvas__box2__advantage_metics__advantage
-                %p 優位性
-                = post.advantage
-              .canvas__box2__advantage_metics__metics
-                %p 評価指標
-                = post.metics
-            .canvas__box2__value.small_box
-              %p 提供価値
-              = post.value
-            .canvas__box2__problem.small_box
-              %p 課題
-              = post.problem
-            .canvas__box2__existing_channel.small_box
-              .canvas__box2__existing_channel__existing
-                %p 代替手段
-                = post.existing
-              .canvas__box2__existing_channel__channel
-                %p チャネル
-                = post.channel
-            .canvas__box2__customer.small_box
-              %p 顧客の状況・傾向
-              = post.customer
-          .canvas__box3
-            .canvas__box3__revenue
-              %p 収益
-              = post.revenue
-            .canvas__box3__cost
-              %p コスト
-              = post.cost
+      = render 'canvas', { post: post }
 
   .favorite_list
     %h2 お気に入り一覧
+    - if @favorite_list.present?
+      - @favorite_list.each do |post|
+        = render 'canvas', { post: post }
