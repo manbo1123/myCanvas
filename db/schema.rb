@@ -10,6 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20200816031801) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -30,6 +31,7 @@ ActiveRecord::Schema.define(version: 20200816031801) do
     t.index ["post_id"], name: "index_favorites_on_post_id", using: :btree
     t.index ["user_id"], name: "index_favorites_on_user_id", using: :btree
   end
+
 
   create_table "posts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text     "problem",    limit: 65535

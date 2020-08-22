@@ -2,6 +2,16 @@
   %p キャンバスは検証が必要。内容は本当に正しいか？
   = form_for @post, local: true do |f|
     .post_form__body
+      %label.post_form__body__label 目的（purpose）
+      %p.post_form__body__text 目的
+      .post_form__body__form
+        = f.text_area :purpose, class: "post_form__body__form__text", placeholder: "目的" 
+
+      %label.post_form__body__label ビジョン（vision）
+      %p.post_form__body__text ビジョン
+      .post_form__body__form
+        = f.text_area :vision, class: "post_form__body__form__text", placeholder: "ビジョン" 
+
       %label.post_form__body__label 課題設定（problem）
       %p.post_form__body__text 顧客が抱えている優先度の高い課題3つ（※ 3つ以上書かない！！）
       .post_form__body__form
@@ -51,6 +61,11 @@
       %p.post_form__body__text マネタイズプラン、収益源
       .post_form__body__form
         = f.text_area :revenue, class: "post_form__body__form__text", placeholder: "マネタイズプラン" 
+
+      %label.post_form__body__label 備考（note）
+      %p.post_form__body__text マークダウン記法で書けます。
+      .post_form__body__form
+        = f.text_area :note, class: "post_form__body__form__text note", placeholder: "# h1" 
 
     .btn
       - if @post.persisted?
