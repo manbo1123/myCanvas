@@ -1,0 +1,19 @@
+.comment_box__content{
+  background-color: lightblue;
+  margin: 20px;
+  &__user{
+    background-color: lightgoldenrodyellow;
+    i{
+      display: block;
+
+    }
+  }
+  &__text{
+    background-color: lightgray;
+    
+  }
+  &__time{
+    background-color: lightseagreen;
+    
+  }
+}
