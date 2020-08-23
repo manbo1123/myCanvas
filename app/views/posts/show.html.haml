@@ -65,3 +65,30 @@
   .memo_box
     %p 調査内容などのメモ
     = markdown(@post.note)
+
+  .favorite_box
+    #favorite{ id: @post.id }
+      = render 'favorites/favorite', { post: @post }
+
+  .comment_box
+    -# コメント一覧 
+    - if @comments
+      - @comments.each do |c|
+        .comment_box__content
+          .comment_box__content__icon
+            %i.far.fa-user-circle.fa-3x
+            - if c.user.id == @post.user.id
+              %p 投稿者
+          .comment_box__content__text
+            .comment_box__content__text__user
+              = c.user.name
+            .comment_box__content__text__message
+              = simple_format(c.comment)
+              .comment_box__content__text__message__time
+                %i.far.fa-clock
+                = c.created_at
+    -# コメント投稿フォーム
+    = form_for [@post, @post.comments.build], local: true do |f|
+      = f.text_area :comment, class: "comment_box__form", placeholder: "コメント" , rows: 5
+      = button_tag type: 'submit', class: 'comment_btn' do
+        %i.fas.fa-comment-dots コメント
