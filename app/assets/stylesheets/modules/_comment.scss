@@ -1,19 +1,68 @@
-.comment_box__content{
-  background-color: lightblue;
-  margin: 20px;
-  &__user{
-    background-color: lightgoldenrodyellow;
-    i{
-      display: block;
-
+// コメント一覧 
+.comment_box{
+  &__content{
+    margin: 20px;
+    display: flex;
+    width: 90%;
+    &__icon{
+      margin-right: 25px;
+      color: gray;
+      p{
+        font-size: small;
+        margin: 3px;
+      }
+    }
+    &__text{
+      width: 100%;
+      font-size: 14px;
+      &__user{
+        font-weight: bolder;
+      }
+      &__message{
+        position: relative;
+        margin: 5px 10px 5px 0;
+        padding: 1px 10px;
+        border-radius: 7px;
+        background-color: #d9ebe86b;
+        &__time{
+          margin-top: 10px;
+          font-size: smaller;
+          color: gray;
+        }
+      }
+      &__message::before{
+        content: "";
+        position: absolute;
+        top: 25px;
+        left: -30px;
+        margin-top: -15px;
+        border: 5px solid transparent;
+        border-right: 25px solid #d9ebe86b;
+      }
     }
   }
-  &__text{
-    background-color: lightgray;
-    
-  }
-  &__time{
-    background-color: lightseagreen;
-    
+// コメント投稿フォーム
+  form{
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+    textarea{
+      width: 100%;
+    }
+    button{
+      background-color: rgba(184, 216, 226, 0.637);
+      border: 1px solid lightgray;
+      display: block;
+      margin: 10px auto;
+      border-radius: 7px;
+      height: 40px;
+      width: 80%;
+      i{
+        text-align: center;
+        line-height: 40px;
+        color: rgb(75, 75, 75);
+        font-size: 22px;
+      }
+    }
   }
 }
