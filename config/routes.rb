@@ -6,9 +6,7 @@ Rails.application.routes.draw do
 
   root "posts#index"
   resources :users, only: [:show, :edit, :update] do
-    collection do
-      get :favorites
-    end
+    get :favorites, on: :collection
   end
 
   resources :posts, expect: [:index] do
