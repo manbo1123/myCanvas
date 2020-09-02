@@ -85,10 +85,15 @@
             .comment_box__content__text__message
               = simple_format(c.comment)
               .comment_box__content__text__message__time
-                %i.far.fa-clock
-                = c.created_at
+                .comment_box__content__text__message__time__show
+                  %i.far.fa-clock
+                  = c.created_at
+                -if c.user.id == current_user.id
+                  .comment_box__content__text__message__time__delete
+                    = link_to '削除', post_comment_path(@post, c), method: :delete, data: {confirm:'本当に削除しますか？'}, class: "comment_delete_btn"
+
     -# コメント投稿フォーム
-    = form_for [@post, @post.comments.build], local: true do |f|
+    = form_for [@post, @comment], local: true do |f|
       = f.text_area :comment, class: "comment_box__form", placeholder: "コメント" , rows: 5
       = button_tag type: 'submit', class: 'comment_btn' do
         %i.fas.fa-comment-dots コメント
