@@ -25,9 +25,20 @@
         border-radius: 7px;
         background-color: #d9ebe86b;
         &__time{
-          margin-top: 10px;
+          margin: 5px 0;
           font-size: smaller;
           color: gray;
+          display: flex;
+          justify-content: space-between;
+          &__delete{
+            margin-right: 10px;
+            border-radius: 4px;
+            padding: 0 10px;
+            border:1px solid rgb(223, 223, 223);
+            .comment_delete_btn{
+              color: gray;
+            }
+          }
         }
       }
       &__message::before{
