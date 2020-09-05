@@ -64,3 +64,4 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'dotenv-rails'
 gem 'redcarpet'   # マークダウン形式
+gem 'acts-as-taggable-on'   # タグ
