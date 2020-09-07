@@ -1,99 +1,101 @@
-.post_show_page
-  %h2 詳細表示ページ
-  .page_turn
-    - if @post.previous.present?
-      = link_to "前へ", post_path(@post.previous)
-    - else
-      %p -
-    - if @post.next.present?
-      = link_to "次へ", post_path(@post.next)
-    - else
-      %p -
-      
-  - if user_signed_in? && current_user.id == @post.user_id
-    .btn
-      = link_to "編集する", edit_post_path(@post), class: "btn", id: "edit_btn"
-      = link_to "削除する", post_path(@post), method: :delete, date: {confilm: "本当に削除しますか？"}, class: "btn", id: "delete_btn"
+.post_show_total
+  = render partial: "side"
 
-      
-  .canvas
-    .canvas__box1
-      .canvas__box1__purpose
-        %p 目的
-        = markdown(@post.purpose)
-      .canvas__box1__vision
-        %p ビジョン
-        = markdown(@post.vision)
-    .canvas__box2
-      .canvas__box2__solution.small_box
-        %p 実現手段
-        = markdown(@post.solution)
-      .canvas__box2__advantage_metics.small_box
-        .canvas__box2__advantage_metics__advantage
-          %p 優位性
-          = markdown(@post.advantage)
-        .canvas__box2__advantage_metics__metics
-          %p 評価指標
-          = markdown(@post.metics)
-      .canvas__box2__value.small_box
-        %p 提供価値
-        = markdown(@post.value)
-      .canvas__box2__problem.small_box
-        %p 課題
-        = markdown(@post.problem)
-      .canvas__box2__existing_channel.small_box
-        .canvas__box2__existing_channel__existing
-          %p 代替手段
-          = markdown(@post.existing)
-        .canvas__box2__existing_channel__channel
-          %p チャネル
-          = markdown(@post.channel)
-      .canvas__box2__customer.small_box
-        %p 顧客の状況・傾向
-        = markdown(@post.customer)
-    .canvas__box3
-      .canvas__box3__revenue
-        %p 収益
-        = markdown(@post.revenue)
-      .canvas__box3__cost
-        %p コスト
-        = markdown(@post.cost)
+  .post_show_page
+    .page_turn
+      - if @post.previous.present?
+        = link_to "前へ", post_path(@post.previous)
+      - else
+        %p -
+      - if @post.next.present?
+        = link_to "次へ", post_path(@post.next)
+      - else
+        %p -
+        
+    - if user_signed_in? && current_user.id == @post.user_id
+      .btn
+        = link_to "編集する", edit_post_path(@post), class: "btn", id: "edit_btn"
+        = link_to "削除する", post_path(@post), method: :delete, date: {confilm: "本当に削除しますか？"}, class: "btn", id: "delete_btn"
 
-  .post_user
-    %p 投稿者 #{@post.user.name}
+        
+    .canvas
+      .canvas__box1
+        .canvas__box1__purpose
+          %p.name 目的
+          = markdown(@post.purpose)
+        .canvas__box1__vision
+          %p.name ビジョン
+          = markdown(@post.vision)
+      .canvas__box2
+        .canvas__box2__solution.small_box
+          %p.name 実現手段
+          = markdown(@post.solution)
+        .canvas__box2__advantage_metics.small_box
+          .canvas__box2__advantage_metics__advantage
+            %p.name 優位性
+            = markdown(@post.advantage)
+          .canvas__box2__advantage_metics__metics
+            %p.name 評価指標
+            = markdown(@post.metics)
+        .canvas__box2__value.small_box
+          %p.name 提供価値
+          = markdown(@post.value)
+        .canvas__box2__problem.small_box
+          %p.name 課題
+          = markdown(@post.problem)
+        .canvas__box2__existing_channel.small_box
+          .canvas__box2__existing_channel__existing
+            %p.name 代替手段
+            = markdown(@post.existing)
+          .canvas__box2__existing_channel__channel
+            %p.name チャネル
+            = markdown(@post.channel)
+        .canvas__box2__customer.small_box
+          %p.name 顧客の状況・傾向
+          = markdown(@post.customer)
+      .canvas__box3
+        .canvas__box3__revenue
+          %p.name 収益
+          = markdown(@post.revenue)
+        .canvas__box3__cost
+          %p.name コスト
+          = markdown(@post.cost)
 
-  .memo_box
-    %p 調査内容などのメモ
-    = markdown(@post.note)
+    .post_user
+      %p 投稿者 #{@post.user.name}
 
-  .favorite_box
-    #favorite{ id: @post.id }
-      = render 'favorites/favorite', { post: @post }
+    .memo_box
+      %p 調査内容などのメモ
+      = markdown(@post.note)
 
-  .comment_box
-    -# コメント一覧 
-    - if @comments
-      - @comments.each do |c|
-        .comment_box__content
-          .comment_box__content__icon
-            %i.far.fa-user-circle.fa-3x
-            - if c.user.id == @post.user.id
-              %p 投稿者
-          .comment_box__content__text
-            .comment_box__content__text__user
-              = c.user.name
-            .comment_box__content__text__message
-              = simple_format(c.comment)
-              .comment_box__content__text__message__time
-                .comment_box__content__text__message__time__show
-                  %i.far.fa-clock
-                  = c.created_at
-                -if c.user.id == current_user.id
-                  .comment_box__content__text__message__time__delete
-                    = link_to '削除', post_comment_path(@post, c), method: :delete, data: {confirm:'本当に削除しますか？'}, class: "comment_delete_btn"
+    .favorite_box
+      #favorite{ id: @post.id }
+        = render 'favorites/favorite', { post: @post }
 
-    -# コメント投稿フォーム
-    = form_for [@post, @comment], local: true do |f|
-      = f.text_area :comment, class: "comment_box__form", placeholder: "コメント" , rows: 5
-      = button_tag type: 'submit', class: 'comment_btn' do
-        %i.fas.fa-comment-dots コメント
+    .comment_box
+      -# コメント一覧 
+      - if @comments
+        - @comments.each do |c|
+          .comment_box__content
+            .comment_box__content__icon
+              %i.far.fa-user-circle.fa-3x
+              - if c.user.id == @post.user.id
+                %p 投稿者
+            .comment_box__content__text
+              .comment_box__content__text__user
+                = c.user.name
+              .comment_box__content__text__message
+                = simple_format(c.comment)
+                .comment_box__content__text__message__time
+                  .comment_box__content__text__message__time__show
+                    %i.far.fa-clock
+                    = c.date_ago
+                  -if c.user.id == current_user.id
+                    .comment_box__content__text__message__time__delete
+                      = link_to '削除', post_comment_path(@post, c), method: :delete, data: {confirm:'本当に削除しますか？'}, class: "comment_delete_btn"
+
+      -# コメント投稿フォーム
+      = form_for [@post, @comment], local: true do |f|
+        = f.text_area :comment, class: "comment_box__form", placeholder: "コメント" , rows: 5
+        = button_tag type: 'submit', class: 'comment_btn' do
+          %i.fas.fa-comment-dots コメント

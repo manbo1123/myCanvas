@@ -1,0 +1,22 @@
+.side_bar
+  %ul.side
+    %li.side__list.canvas_list
+      %i.fas.fa-newspaper.fa-lg.fa-fw
+      %span Canvas
+    %li.side__list.memo_list
+      %i.far.fa-sticky-note.fa-lg.fa-fw
+      %span note
+    %li.side__list.image_list
+      %i.far.fa-images.fa-lg.fa-fw
+      %span image
+  
+  -# タグ一覧
+  .tag_list
+    .tag_icon
+      %i.fas.fa-tags.fa-sm 
+      %span 関連タグ
+    - if @tags.present?
+      - @tags.each do |tag|
+        = link_to "##{tag.name}(#{tag.taggings_count})", root_path
+    - else
+      %p ※ 該当のタグなし
