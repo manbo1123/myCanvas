@@ -118,6 +118,8 @@
         background-color: rgb(247, 247, 247);
         border: 1px solid rgb(228, 228, 228);
         border-radius: 10px;
+        font-size: 13px;
+        line-height: 25px;
       }
       a:hover{
         background-color: rgb(228, 228, 228);
@@ -258,4 +260,7 @@
       }
     }
   }
+}
+.ui-helper-hidden-accessible {  // メッセージを非表示にしとく
+  display: none;
 }
