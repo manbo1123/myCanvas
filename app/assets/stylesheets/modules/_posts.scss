@@ -65,6 +65,8 @@
   }
   //---------------トップページのタグ一覧----------------------
   .tag_lists{
+    flex-wrap: wrap;
+    margin: 0 auto;
     display: flex;
     justify-content:center;
     i{
@@ -72,6 +74,8 @@
       line-height: 40px;
     }
     a{
+      font-size: small;
+      line-height: 26px;
       display: block;
       height: 25px;
       margin: 5px;

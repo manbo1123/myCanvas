@@ -26,12 +26,13 @@ $(document).on("click", '.side__list', function() {
 
 //-----------------------タグ入力-----------------------//
 $(document).ready(function() {
-  let tag_count = 10 - $(".tagit-choice").length
   $(".post_form__body__form__text.tag").tagit({
     tagLimit:10,   // タグの最大数
     singleField: true,   // タグの一意性
-    availableTags: ['php', 'ruby', 'react', 'reactNative', 'laravel']
   });
+  let tag_count = 10 - $(".tagit-choice").length
+  $(".ui-widget-content.ui-autocomplete-input").attr(
+    'placeholder','あと' + tag_count + '個登録できます');
 })
 
 $(document).on("keyup", '.tagit', function() {
