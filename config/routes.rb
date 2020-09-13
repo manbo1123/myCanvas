@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :posts, expect: [:index] do
     resource :favorites, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    get 'get_tag_search', on: :collection, defaults: { format: 'json' }
+    get 'get_tag_search', on: :member, defaults: { format: 'json' }
   end
 
-  get 'tags/:tag', to: "posts#index", as: :tag
+  #get 'tags/:tag', to: "posts#index", as: :tag
 end

@@ -39,4 +39,24 @@ $(document).on("keyup", '.tagit', function() {
   let tag_count = 10 - $(".tagit-choice").length
   $(".ui-widget-content.ui-autocomplete-input").attr(
   'placeholder','あと' + tag_count + '個登録できます');
-})
+
+  // Ajaxで、タグ一覧を取得
+  let input = $(".ui-widget-content.ui-autocomplete-input").val();  // 変数inputに、入力した値を格納
+  $.ajax({
+    type: 'GET',
+    url: 'get_tag_search',
+    data: { key: input },
+    dataType: 'json'
+  })
+  .done(function(data){
+    if(input.length) {
+      let tag_list = [];
+      data.forEach(function(tag) {
+        tag_list.push(tag.name);
+      });
+      $(".post_form__body__form__text.tag").tagit({
+        availableTags: tag_list
+      });
+    }
+  })
+});

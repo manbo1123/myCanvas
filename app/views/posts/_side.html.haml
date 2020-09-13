@@ -17,6 +17,6 @@
       %span 関連タグ
     - if @tags.present?
       - @tags.each do |tag|
-        = link_to "##{tag.name}(#{tag.taggings_count})", root_path
+        = link_to "##{tag.name}(#{tag.taggings_count})", posts_path(tag: tag.name)
     - else
       %p ※ 該当のタグなし

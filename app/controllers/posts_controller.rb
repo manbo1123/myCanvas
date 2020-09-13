@@ -6,6 +6,9 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     @tags = Post.tag_counts_on(:tags).most_used(20)    # タグ一覧表示
+    if @tag = params[:tag]   # タグ検索
+      @post = Post.tagged_with(params[:tag])
+    end
   end
 
   def show
@@ -34,6 +37,10 @@ class PostsController < ApplicationController
   end
 
   def edit
+  end
+
+  def get_tag_search  # タグ入力時のインクリメンタルサーチ
+    @tags = Post.tag_counts_on(:tags).where('name LIKE(?)', "%#{params[:key]}%")
   end
 
   def update
