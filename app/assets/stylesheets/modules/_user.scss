@@ -22,15 +22,21 @@
         color: rgb(0, 87, 250);
         margin-right: 25px;
       }
-    }
-    .canvas{
-      zoom: 0.4;
-      width: 90%;
-      margin: 0 auto;
+      .canvas{
+        zoom: 0.4;
+        width: 90%;
+        margin: 0 auto;
+      }
     }
   }
   .favorite_list{
     height: 100%;
+    &__canvas{
+      display:flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
   }
 }
 

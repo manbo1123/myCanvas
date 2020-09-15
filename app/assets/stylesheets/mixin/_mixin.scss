@@ -1,0 +1,6 @@
+// キャンバスのはみ出し部分のスクロール表示
+@mixin overflow() {
+  overflow: scroll;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

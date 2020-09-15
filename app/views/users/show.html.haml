@@ -9,6 +9,7 @@
 
   .favorite_list
     %h2 お気に入り一覧
-    - if @favorite_list.present?
-      - @favorite_list.each do |post|
-        = render 'canvas', { post: post }
+    .favorite_list__canvas
+      - if @favorite_list.present?
+        - @favorite_list.each do |post|
+          = render 'canvas', { post: post }
