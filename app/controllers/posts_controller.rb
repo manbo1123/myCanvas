@@ -5,6 +5,10 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @tags = Post.tag_counts_on(:tags).most_used(20)    # タグ一覧表示
+    if @tag = params[:tag]   # タグ検索
+      @post = Post.tagged_with(params[:tag])
+    end
   end
 
   def show
@@ -12,6 +16,8 @@ class PostsController < ApplicationController
 
     @comment = Comment.new     # フォーム用のインスタンス作成(コメント追加用)
     @comments = @post.comments # コメント一覧表示用
+
+    @tags = @post.tag_counts_on(:tags)
   end
 
   def new
@@ -31,6 +37,10 @@ class PostsController < ApplicationController
   end
 
   def edit
+  end
+
+  def get_tag_search  # タグ入力時のインクリメンタルサーチ
+    @tags = Post.tag_counts_on(:tags).where('name LIKE(?)', "%#{params[:key]}%")
   end
 
   def update
@@ -68,7 +78,8 @@ class PostsController < ApplicationController
       :customer, 
       :cost, 
       :revenue,
-      :note).merge(user_id: current_user.id)
+      :note,
+      :tag_list).merge(user_id: current_user.id)
   end
 
   def set_post

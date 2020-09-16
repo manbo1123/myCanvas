@@ -38,6 +38,9 @@
 
   }
   //---------------トップページのキャンバス----------------------
+  .view_title{
+    text-align: center;
+  }
   .post_list_title{
     text-align: center;
   }
@@ -63,70 +66,140 @@
       margin: 0 auto;
     }
   }
+  //---------------トップページのタグ一覧----------------------
+  .tag_lists{
+    flex-wrap: wrap;
+    margin: 0 auto;
+    display: flex;
+    justify-content:center;
+    i{
+      margin-right: 10px;
+      line-height: 40px;
+    }
+    a{
+      font-size: small;
+      line-height: 26px;
+      display: block;
+      height: 25px;
+      margin: 5px;
+      padding: 0 10px;
+      background-color: rgb(247, 247, 247);
+      border: 1px solid rgb(228, 228, 228);
+      border-radius: 10px;
+    }
+    a:hover{
+      background-color: rgb(228, 228, 228);
+    }
+  }
 }
 
 //----------------------詳細ページ---------------------------
-.post_show_page{
-  padding-top: 50px;
-  padding-left: 10px;
-  width: 830px;
-  margin: 0 auto;
-  h2{
-    margin-bottom: 0px;
+.post_show_total{
+  display: flex;
+  .side_bar{
+    position: fixed;
+    top: 50px;
+    height: 100%;
+    border-right: 1px solid rgb(209, 209, 209);
+    margin-right: 5px;
+    padding-top: 50px;
+    width: 120px;
+    .side{
+      &__list{
+      line-height: 40px;
+      padding-left: 10px;
+      }
+      &__list:hover{
+        background-color: gray;
+        color: white;
+      }
+    }
+    .tag_list{
+      margin-top: 20px;
+      padding-left: 10px;
+      a{
+        display: block;
+        height: 25px;
+        margin: 5px;
+        padding-left: 5px;
+        background-color: rgb(247, 247, 247);
+        border: 1px solid rgb(228, 228, 228);
+        border-radius: 10px;
+        font-size: 13px;
+        line-height: 25px;
+      }
+      a:hover{
+        background-color: rgb(228, 228, 228);
+      }
+      p{
+        font-size: 8px;
+        color: gray;
+        text-align: center;
+      }
+    }
   }
-  .post_user{
-    text-align: right;
-    width: 95%;
-  }
+  .post_show_page{
+    padding-top: 50px;
+    padding-left: 10px;
+    width: 830px;
+    margin-left: 120px;
+    h2{
+      margin-bottom: 0px;
+    }
+    .post_user{
+      text-align: right;
+      width: 95%;
+    }
 
-  .memo_box{
-    width: 100%;
-    height: 500px;
-    ul li{
-      list-style: inside;
+    .memo_box{
+      width: 100%;
+      height: 500px;
+      ul li{
+        list-style: inside;
+      }
+      p{
+        font-weight: 800;
+        color: rgba(40, 40, 99, 0.616);
+      }
+      h1,h2,h3,h4,h5,h6 {
+        margin: 0;
+        padding: 0;
+      } 
     }
-    p{
-      font-weight: 800;
-      color: rgba(40, 40, 99, 0.616);
+    // 編集ボタン、削除ボタン
+    .btn{
+      display: flex;
+      justify-content:flex-end;
+      margin: 2px 0;
+      a{
+        display: block;
+        text-align:center;
+        background-color: pink;
+        width: 100px;
+        margin-right: 10px;
+      }
+      a#edit_btn{
+        background-color: rgba(0, 88, 219, 0.884);
+        border: 1px solid rgb(207, 205, 205);
+        color: white;
+      }
+      a#delete_btn{
+        background-color: rgb(241, 241, 241);
+        border: 1px solid rgb(207, 205, 205);
+      }
     }
-    h1,h2,h3,h4,h5,h6 {
-      margin: 0;
-      padding: 0;
-    } 
-  }
-  // 編集ボタン、削除ボタン
-  .btn{
-    display: flex;
-    justify-content:flex-end;
-    margin: 2px 0;
-    a{
-      display: block;
-      text-align:center;
-      background-color: pink;
-      width: 100px;
-      margin-right: 10px;
-    }
-    a#edit_btn{
-      background-color: rgba(0, 88, 219, 0.884);
-      border: 1px solid rgb(207, 205, 205);
-      color: white;
-    }
-    a#delete_btn{
-      background-color: rgb(241, 241, 241);
-      border: 1px solid rgb(207, 205, 205);
-    }
-  }
 
-  // ページめくりボタン
-  .page_turn{
-    display: flex;
-    justify-content: space-between;
-    color: rgba(56, 66, 94, 0.836);
-    a{
+    // ページめくりボタン
+    .page_turn{
+      display: flex;
+      justify-content: space-between;
       color: rgba(56, 66, 94, 0.836);
-    }
-    p{
-      margin: 0;
+      a{
+        color: rgba(56, 66, 94, 0.836);
+      }
+      p{
+        margin: 0;
+      }
     }
   }
 }
@@ -169,6 +242,9 @@
           background-color: rgb(233, 238, 243);
           height: 700px;
         }
+        .tag {
+          width: 100%;
+        }
       }
     }
     .btn{
@@ -191,4 +267,7 @@
       }
     }
   }
+}
+.ui-helper-hidden-accessible {  // メッセージを非表示にしとく
+  display: none;
 }
