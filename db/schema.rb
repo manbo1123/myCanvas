@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200905143633) do
+ActiveRecord::Schema.define(version: 20200920065000) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",                  null: false
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20200905143633) do
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
+  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "provider"
+    t.string   "uid"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id", using: :btree
+  end
+
   create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "tag_id"
     t.string   "taggable_type"
@@ -85,8 +94,6 @@ ActiveRecord::Schema.define(version: 20200905143633) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "uid"
-    t.string   "provider"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["encrypted_password"], name: "index_users_on_encrypted_password", using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -96,5 +103,6 @@ ActiveRecord::Schema.define(version: 20200905143633) do
   add_foreign_key "comments", "users"
   add_foreign_key "favorites", "posts"
   add_foreign_key "favorites", "users"
+  add_foreign_key "sns_credentials", "users"
   add_foreign_key "taggings", "tags"
 end
