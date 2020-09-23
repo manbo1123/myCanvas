@@ -17,6 +17,8 @@
         - if user_signed_in?
           = link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout_btn"
           = link_to "マイページ", user_path(current_user), class: "mypage_show"
+          = link_to edit_user_path(current_user) do
+            = icon('fas', 'cog', class: 'icon')
         - else
           = link_to "ログイン", new_user_session_path, class: "login_btn"
           = link_to "新規ユーザー登録", new_user_registration_path, class: "registration_btn"
