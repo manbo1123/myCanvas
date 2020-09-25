@@ -10,9 +10,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    if params[:sns_auth] == 'true'
+      pass = Devise.friendly_token  # PWを自動生成
+      params[:user][:password] = pass
+      params[:user][:password_confirmation] = pass
+    end
+    super  # superメソッドで、親モデルの同名メソッドを実行
+  end
 
   # GET /resource/edit
   # def edit

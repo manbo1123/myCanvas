@@ -11,15 +11,20 @@
       %em (7 文字以内)
       %br/
       = f.text_field :name, autofocus: true, maxlength: "7", autocomplete: "name", placeholder: "User name" 
-    .field
-      = f.label :password
-      %em (#{@minimum_password_length} 文字以上)
-      %br/
-      = f.password_field :password, autocomplete: "new-password", placeholder: "Password" 
-    .field
-      = f.label :password_confirmation
-      %br/
-      = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password" 
+
+    - if @sns_id.present?  # @sns_idが存在すれば、パスワード入力欄を非表示にする(params[:sns_auth]として、trueを返す)
+      = hidden_field_tag :sns_auth, true
+    - else
+      .field
+        = f.label :password
+        %em (#{@minimum_password_length} 文字以上)
+        %br/
+        = f.password_field :password, autocomplete: "new-password", placeholder: "Password" 
+      .field
+        = f.label :password_confirmation
+        %br/
+        = f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "Password" 
+
     .actions
-      = f.submit "メールアドレスで登録"
+      = f.submit "ユーザー登録"
   = render "devise/shared/links"
