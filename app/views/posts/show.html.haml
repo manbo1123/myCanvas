@@ -65,8 +65,21 @@
       %p 投稿者 #{@post.user.name}
 
     .memo_box
-      %p 調査内容などのメモ
+      %p.content_title 調査内容などのメモ
       = markdown(@post.note)
+
+    -# 画像一覧表示
+    .images_box
+      %p.content_title 関連画像
+      - if @post.imgs.present?
+        .images_box__big
+          = image_tag @post.imgs.first.src, class: "big-image"
+        %ul.images_box__small
+          - @post.imgs.each.with_index do |img, i|
+            %li.sub-image
+              = image_tag img.src, class: "small-image"
+      - else
+        %p.image_message 画像の登録はありません。
 
     .favorite_box
       #favorite{ id: @post.id }

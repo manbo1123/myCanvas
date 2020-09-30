@@ -13,17 +13,39 @@ $(document).on("click", '.side__list', function() {
     $(".canvas").css("display", "block");
     $(".post_user").css("display", "block");
     $(".memo_box").css("display", "none");
+    $(".images_box").css("display", "none");
   } else if (index == 1) {  // ノート
     $(".memo_box").css("display", "block");
     $(".canvas").css("display", "none");
     $(".post_user").css("display", "none");
+    $(".images_box").css("display", "none");
   } else {  // 画像
     $(".canvas").css("display", "none");
     $(".post_user").css("display", "none");
     $(".memo_box").css("display", "none");
+    $(".images_box").css("display", "block");
   }
 });
+//-----------------------画像一覧表示-----------------------//
+$(document).on("click", '.small-image', function() {
+  //mainに切り替えるimgのsrc取得
+  img = $(this).attr('src');
+  //currentクラス付け替え
+  $('.sub-image li').removeClass('current');
+  $(this).parent().addClass('current');
+  $('.small-image').css("opacity", 0.5);
+  $(this).css("opacity", 1);
 
+  $('.sub-image').css("border", "1px dotted rgb(165, 165, 165)");
+  $(this).parent().css("border", "1px dotted rgba(0, 88, 219, 0.884)");
+
+  //fadeOutし、srcを変更してfadeIn
+  $('.big-image').fadeOut("slow", function() {
+    $('.big-image').attr('src', img).on('load', function() {
+       $(this).fadeIn();
+    });
+  });
+});
 //-----------------------タグ入力-----------------------//
 $(document).ready(function() {
   $(".post_form__body__form__text.tag").tagit({
