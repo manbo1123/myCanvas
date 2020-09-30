@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
-  before_action :set_post, only: [:show, :edit]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   def index
     @posts = Post.all
@@ -12,8 +12,6 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
-
     @comment = Comment.new     # フォーム用のインスタンス作成(コメント追加用)
     @comments = @post.comments # コメント一覧表示用
 
@@ -22,13 +20,14 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @post.imgs.build 
   end
 
   def create
-    @post = Post.create(post_params)
+    @post = Post.new(post_params)
     if @post.save
       # 成功の場合
-      redirect_to root_path, notice: '登録しました'
+      redirect_to post_path(@post), notice: '登録しました'
     else
       # 失敗の場合
       flash.now[:alert] = '登録に失敗しました'
@@ -44,9 +43,8 @@ class PostsController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    if post.update(post_params)
-      redirect_to post_path(post), notice: '更新しました'
+    if @post.update(post_params)
+      redirect_to post_path(@post), notice: '更新しました'
     else
       flash.now[:alert] = '更新に失敗しました'
       render :edit
@@ -54,8 +52,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
-    if post.destroy
+    if @post.destroy
       redirect_to root_path, notice: '削除しました'
     else
       flash.now[:alert] = '削除に失敗しました'
@@ -79,11 +76,13 @@ class PostsController < ApplicationController
       :cost, 
       :revenue,
       :note,
-      :tag_list).merge(user_id: current_user.id)
+      :tag_list,
+      imgs_attributes: [:src, :_destroy, :id]
+      ).merge(user_id: current_user.id)
   end
 
   def set_post
-    @post = Post.includes(:user).find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def correct_user
