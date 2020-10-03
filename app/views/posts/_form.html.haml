@@ -72,6 +72,27 @@
       .post_form__body__form
         = f.text_field :tag_list, value: @post.tag_list.join(","), class: "post_form__body__form__text tag"
 
+      .post_form__body__image
+        %label.image_label 画像投稿
+        .post_form__body__image__box
+          .previews
+            - if @post.persisted?
+              - @post.imgs.each_with_index do |img, i|
+                .preview.preview_saved{{data:{name: i+1}},{data:{index: i+1}}}
+                  .img_box
+                    = image_tag img.src.url, data:{ index: i +1}, class: "preview_image"
+                  .image_delete_btn 削除
+
+          %label.image_box
+            .image_box__input
+              = icon('fas', 'camera-retro')
+              %p 画像アップロード
+            .image_box__input__dropbox{data: {index: 1}}
+              = f.file_field :src, class: "image_box__input__default", type: 'file', multiple: true, accept: "image/*"
+            - if @post.persisted?   # DBに保存済みの画像があれば、チェックボックスも設置
+              = f.fields_for :imgs do |i|
+                = i.check_box :_destroy, data:{ index: i.index + 1 }, class: "hidden-destroy"
+
     .btn
       - if @post.persisted?
         = f.submit "更新する", class: "post_btn"
