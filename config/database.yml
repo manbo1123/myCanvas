@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: myCanvas_production
-  username: myCanvas
-  password: <%= ENV['MYCANVAS_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
