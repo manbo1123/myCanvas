@@ -2,7 +2,7 @@ app_path = File.expand_path('../../', __FILE__)   # サーバー上で、アプ�
 worker_processes 1                       # アプリサーバーの性能を決定
 working_directory app_path               # アプリの設置されてるディレクトリを指定
 pid "#{app_path}/tmp/pids/unicorn.pid"   # Unicorn起動に必要なファイルの設置場所を指定
-listen 3000                              # ポート番号を指定
+listen "#{app_path}/tmp/sockets/unicorn.sock"     # ポート番号を指定
 stderr_path "#{app_path}/log/unicorn.stderr.log"  # エラーのログ記録ファイルを指定
 stdout_path "#{app_path}/log/unicorn.stdout.log"  # 通常のログ記録ファイルを指定
 timeout 60                               # 応答を待つ上限時間を設定
