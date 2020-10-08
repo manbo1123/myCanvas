@@ -17,7 +17,7 @@ set :unicorn_pid, -> { "#{shared_path}/tmp/pids/unicorn.pid" }        # プロ�
 set :unicorn_config_path, -> { "#{current_path}/config/unicorn.rb" }  # Unicornの設定ファイルの場所
 set :keep_releases, 5
 
-set :linked_files, %w{ config/secrets.yml }   # secrets.yml用のシンボリックリンクを追加
+# set :linked_files, %w{ config/secrets.yml }   # secrets.yml用のシンボリックリンクを追加
 
 # デプロイ終了後、Unicornを再起動する記述
 after 'deploy:publishing', 'deploy:restart'
