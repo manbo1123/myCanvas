@@ -77,3 +77,4 @@ gem 'acts-as-taggable-on', git: 'https://github.com/mbleigh/acts-as-taggable-on'
 gem 'jquery-ui-rails'   # tag-it 使用のため
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog-aws'
