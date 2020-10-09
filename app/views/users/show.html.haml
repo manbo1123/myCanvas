@@ -1,4 +1,8 @@
 .mypage
+  .breadcrumbs
+    - breadcrumb :user
+    = breadcrumbs separator: " &rsaquo; "
+
   %h2
     = current_user.name
     さんの投稿一覧

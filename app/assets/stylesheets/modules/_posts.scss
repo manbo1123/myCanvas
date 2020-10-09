@@ -94,15 +94,20 @@
 }
 
 //----------------------詳細ページ---------------------------
+.breadcrumbs_post_show{
+  padding-top: 50px;
+}
+
 .post_show_total{
   display: flex;
+
   .side_bar{
     position: fixed;
     top: 50px;
     height: 100%;
     border-right: 1px solid rgb(209, 209, 209);
     margin-right: 5px;
-    padding-top: 50px;
+    margin-top: 30px;
     width: 120px;
     .side{
       &__list{
