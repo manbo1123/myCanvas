@@ -78,3 +78,4 @@ gem 'jquery-ui-rails'   # tag-it 使用のため
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
+gem 'gretel'
