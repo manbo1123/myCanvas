@@ -20,8 +20,8 @@ end
     link "キャンバス", post_path
     parent :root
   end
-  
-# crumb :projects do
+
+  # crumb :projects do
 #   link "Projects", projects_path
 # end
 
