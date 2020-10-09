@@ -14,6 +14,16 @@
   - MySQL
   - nginx、unicorn
 
+# ブラウザでのアクセス
+http://13.112.125.237/
+
+## 学習の記録（Qiita）
+- [【Rails】SNS認証の登録手順(Twitter、Facebook、google)](https://qiita.com/manbolila/items/8caa1f5d2b1fb96d2646)
+- [【Rails】SNS認証(Twitter、Facebook、google)](https://qiita.com/manbolila/items/48d361fd5968179918c3)
+- [【Rails】お気に入り機能](https://qiita.com/manbolila/items/43a04e8d0d5018cf7f62)
+- [【Rails】コメント機能（登録・表示・削除）](https://qiita.com/manbolila/items/84739af7a73acd33f067)
+- [【Rails】タグ管理機能(acts-as-taggable-on使用)](https://qiita.com/manbolila/items/3f178b7698d877a29b12)
+
 # Functions
 - ユーザー新規登録・ログイン/ログアウト機能・SNS連携
 - マイページ機能
