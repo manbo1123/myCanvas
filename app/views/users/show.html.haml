@@ -1,6 +1,6 @@
 .mypage
   .breadcrumbs
-    - breadcrumb :user
+    - breadcrumb :user, @user
     = breadcrumbs separator: " &rsaquo; "
   %h2
     = current_user.name
